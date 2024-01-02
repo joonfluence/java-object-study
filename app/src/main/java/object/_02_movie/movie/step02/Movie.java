@@ -5,6 +5,7 @@ import object._02_movie.money.Money;
 import java.time.Duration;
 
 public class Movie {
+
     private String title;
     private Duration runningTime;
     private Money fee;
@@ -23,5 +24,18 @@ public class Movie {
 
     public Money calculateMovieFee(Screening screening) {
         return fee.minus(discountPolicy.calculateDiscountAmount(screening));
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * 실행 시점에 할인 정책을 변경한다.
+     *
+     * @param discountPolicy 변경할 할인 정책.
+     */
+    public void changeDiscountPolicy(DiscountPolicy discountPolicy) {
+        this.discountPolicy = discountPolicy;
     }
 }
